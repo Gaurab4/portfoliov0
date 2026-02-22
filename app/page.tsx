@@ -14,14 +14,14 @@ const features = [
 ];
 
 const projectsData = [
-  { id: "tripmate", title: "TripMate AI", description: "AI-powered travel planner with personalized itineraries", tags: ["React", "Django", "Gemini API", "Google Places API"], fullDescription: "An AI-powered travel planner that generates personalized itineraries using the Gemini API. Integrated Google Places API to recommend top-rated spots with 95% accuracy. Built a real-time, scalable React + Django architecture.", previewUrl: "https://placehold.co/1200x750/1a1a2e/6366f1?text=TripMate+AI", color: "#6366f1", githubUrl: "#", liveUrl: "#" },
+  { id: "tripmate", title: "TripMate AI", description: "AI-powered travel planner with personalized itineraries", tags: ["React", "Django", "Gemini API", "OpenStreetMap"], fullDescription: "An AI-powered travel planner that creates personalized itineraries using the Gemini API. Integrated OpenStreetMap (Nominatim) for location search and place recommendations. Built a real-time, scalable React + Django architecture.", previewUrl: "https://trip-ai-mate.vercel.app/", color: "#6366f1", githubUrl: "https://github.com/Gaurab4/tripmate", liveUrl: "https://trip-ai-mate.vercel.app/" },
   { id: "artisanclub", title: "ArtisanClub", description: "Project management platform for creative teams", tags: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "Docker"], fullDescription: "A project management and collaboration platform for creative teams. Built task assignment, file sharing, and client portals from scratch. Used Docker to containerize the app for easy deployment.", previewUrl: "https://placehold.co/1200x750/0f172a/22c55e?text=ArtisanClub", color: "#22c55e", githubUrl: "#", liveUrl: "#" },
 ];
 
 const experiences = [
-  { period: "Nov 2024 – Present", type: "Full-time", title: "Software Engineer", company: "Bryckel AI", description: "Built a real-time document highlighting system, improving review speed by 60%. Optimized Django REST APIs, cutting response time by 50%+. Automated Excel/PDF report generation with Pandas and ReportLab.", tags: ["Django", "React", "Python", "Pandas", "ReportLab", "REST APIs"] },
-  { period: "Jun 2024 – Nov 2024", type: "Full-time", title: "Software Engineer", company: "Skizaa", description: "Developed responsive UIs with React, including an Infinity Scroll that reduced loading time from 1–2 min to ~3 sec.", tags: ["React", "JavaScript", "UX", "Performance"] },
-  { period: "Sept 2023 – Jun 2024", type: "Internship", title: "Frontend Intern", company: "Skizaa", description: "Integrated APIs for dashboards, implemented Mixpanel analytics, and fixed core UI bugs. Improved feature adoption by 30%.", tags: ["React", "APIs", "Mixpanel", "Analytics", "UI"] },
+  { period: "Nov 2024 – Present", type: "Full-time", title: "Software Engineer", company: "Bryckel AI", points: ["Implemented RBAC system for role-based access control", "Built end-to-end onboarding flow for new users", "Architected and implemented 2 separate product line architectures", "Maintained and improved credit flow management", "Designed, created, and optimized REST APIs", "Implemented Excel generation from JSON data using third-party libraries"], tags: ["React", "Django", "Python", "PostgreSQL", "Pandas", "ReportLab", "REST APIs"] },
+  { period: "Jun 2024 – Nov 2024", type: "Full-time", title: "Software Engineer", company: "Skizaa", location: "Remote", points: ["Developed dynamic and responsive user interfaces using React.js, enhancing user experience and performance", "Created an efficient Infinity Scroll feature, reducing data loading time by 90% (1–2 min → 2–3 sec)", "Collaborated with core team to ensure seamless UX, driving positive feedback and engagement", "Integrated Mixpanel analytics and session tracking across key modules, enabling data-driven insights that increased user engagement and improved feature adoption by 30%"], tags: ["React", "Redux", "Java", "JavaScript"] },
+  { period: "Sept 2023 – Jun 2024", type: "Internship", title: "Frontend Intern", company: "Skizaa", points: ["Integrated APIs for dashboards", "Implemented Mixpanel analytics", "Fixed core UI bugs across the application", "Improved feature adoption by 30% through data-driven iteration"], tags: ["React", "APIs", "Mixpanel", "Analytics", "UI"] },
 ];
 
 const skillCategories = [
@@ -40,10 +40,10 @@ const articles = [
 ];
 
 const contactInfo = [
-  { label: "EMAIL", value: "gaurab@example.com", icon: "mail" },
+  { label: "EMAIL", value: "gaurabth200@gmail.com", href: "mailto:gaurabth200@gmail.com", icon: "mail" },
   { label: "PHONE", value: "+91-8909365272", href: "tel:+918909365272", icon: "phone" },
-  { label: "LOCATION", value: "Begaluru, Karnataka, India", icon: "location" },
-
+  { label: "LOCATION", value: "Bengaluru, Karnataka, India", icon: "location" },
+  { label: "AVAILABILITY", value: "Open to opportunities", icon: "calendar" },
 ];
 
 export default function Home() {
@@ -67,7 +67,7 @@ export default function Home() {
           <h1 className="mb-2 text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl md:text-6xl">Gaurab</h1>
           <p key={roleIndex} className="mb-6 min-h-[1.75rem] text-lg text-zinc-600 animate-fade-in">{roleLabels[roleIndex]}</p>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-zinc-500">
-            Full-stack developer building performant, scalable web apps. React · Next.js · Django · Node.js
+            Software Engineer building performant, scalable web apps. React · Next.js · Django · Node.js
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link href="/#projects" className="inline-flex h-12 items-center justify-center rounded-lg bg-zinc-900 px-6 text-sm font-semibold text-white transition-colors hover:bg-zinc-700">View Projects</Link>
@@ -75,16 +75,21 @@ export default function Home() {
           </div>
         </main>
         <div className="relative z-10 flex justify-center gap-4 pb-8">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="GitHub">
+          <a href="https://github.com/Gaurab4" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="GitHub">
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23 9.585-2.655 19.965-.885 19.965 0 0 1 3.3-1.23c.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg>
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/gaurab-t/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="LinkedIn">
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="Twitter">
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+          <a href="https://leetcode.com/u/thgemma/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="LeetCode">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 13h7.5" />
+              <path d="M9.424 7.268l4.999 -4.999" />
+              <path d="M16.633 16.644l-2.402 2.415a3.189 3.189 0 0 1 -4.524 0l-3.77 -3.787a3.223 3.223 0 0 1 0 -4.544l3.77 -3.787a3.189 3.189 0 0 1 4.524 0l2.302 2.313" />
+            </svg>
           </a>
-          <a href="mailto:hello@example.com" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="Email">
+          <a href="mailto:gaurabth200@gmail.com" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="Email">
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           </a>
         </div>
@@ -103,7 +108,7 @@ export default function Home() {
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2">01. ABOUT ME</p>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-6">Crafting Digital Experiences</h2>
               <div className="space-y-4 text-base leading-relaxed text-zinc-600 mb-8">
-                <p>I&apos;m a full-stack developer passionate about building performant, scalable web applications. I specialize in React, Next.js, Django, and Node.js, and enjoy crafting both frontend interfaces and backend systems that deliver real impact.</p>
+                <p>I&apos;m a Software Engineer passionate about building performant, scalable web applications. I specialize in React, Next.js, Django, and Node.js, and enjoy crafting both frontend interfaces and backend systems that deliver real impact.</p>
                 <p>Over the past year, I&apos;ve worked on real-time document systems, API optimization, and AI-integrated tools. I love turning complex problems into clean, efficient code.</p>
               </div>
             </div>
@@ -131,7 +136,7 @@ export default function Home() {
       <section id="projects" className="min-h-screen pt-24 pb-12 bg-[#f5f5f5] scroll-mt-20">
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2">02. PROJECTS</p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-8">Selected Work</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-8">Recent Work</h2>
           <div className="grid lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-3">
               {projectsData.map((p) => (
@@ -154,8 +159,12 @@ export default function Home() {
                   <div className="flex-1 mx-4 py-1 px-3 rounded bg-zinc-800 text-zinc-500 text-xs truncate">{selectedProject.previewUrl}</div>
                 </div>
                 <div className="relative aspect-video bg-zinc-900 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={selectedProject.previewUrl} alt={`${selectedProject.title} preview`} className="w-full h-full object-cover" loading="lazy" />
+                  {selectedProject.liveUrl && selectedProject.liveUrl !== "#" ? (
+                    <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" />
+                  ) : (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img src={selectedProject.previewUrl} alt={`${selectedProject.title} preview`} className="w-full h-full object-cover" loading="lazy" />
+                  )}
                   <div className="absolute left-0 right-0 top-0 h-px opacity-20 pointer-events-none animate-scan-line" style={{ background: `linear-gradient(90deg, transparent, ${selectedProject.color}, transparent)` }} />
                 </div>
               </div>
@@ -163,8 +172,8 @@ export default function Home() {
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="text-xl font-bold text-zinc-900">{selectedProject.title}</h3>
                   <div className="flex gap-2 shrink-0">
-                    {selectedProject.githubUrl && <a href={selectedProject.githubUrl} className="w-9 h-9 rounded-full border border-zinc-200/80 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-300 transition-colors" aria-label="GitHub"><svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23 9.585-2.655 19.965-.885 19.965 0 0 1 3.3-1.23c.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg></a>}
-                    {selectedProject.liveUrl && <a href={selectedProject.liveUrl} className="w-9 h-9 rounded-full border border-zinc-200/80 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-300 transition-colors" aria-label="Live demo"><svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>}
+                    {selectedProject.githubUrl && selectedProject.githubUrl !== "#" && <a href={selectedProject.githubUrl} className="w-9 h-9 rounded-full border border-zinc-200/80 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-300 transition-colors" aria-label="GitHub"><svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23 9.585-2.655 19.965-.885 19.965 0 0 1 3.3-1.23c.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg></a>}
+                    {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && <a href={selectedProject.liveUrl} className="w-9 h-9 rounded-full border border-zinc-200/80 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-300 transition-colors" aria-label="Live demo"><svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>}
                   </div>
                 </div>
                 <p className="text-zinc-600 leading-relaxed mb-4">{selectedProject.fullDescription}</p>
@@ -190,9 +199,20 @@ export default function Home() {
                     <div className="flex flex-wrap items-center gap-2 mb-1">
                       <span className="text-sm text-zinc-500">{exp.period}</span>
                       <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-200 text-zinc-600">{exp.type}</span>
+                      {"location" in exp && exp.location && (
+                        <span className="text-xs text-zinc-500">· {exp.location}</span>
+                      )}
                     </div>
                     <h3 className="text-lg font-semibold text-zinc-900">{exp.title} at {exp.company}</h3>
-                    <p className="text-zinc-600 leading-relaxed mt-2 mb-3">{exp.description}</p>
+                    {"points" in exp && exp.points ? (
+                      <ul className="text-zinc-600 leading-relaxed mt-2 mb-3 space-y-1 list-disc list-inside">
+                        {exp.points.map((point: string, j: number) => <li key={j}>{point}</li>)}
+                      </ul>
+                    ) : (
+                      <p className="text-zinc-600 leading-relaxed mt-2 mb-3">
+                        {"description" in exp ? (exp as { description: string }).description : ""}
+                      </p>
+                    )}
                     <div className="flex flex-wrap gap-2">{exp.tags.map((tag) => <span key={tag} className="text-xs px-2 py-0.5 rounded bg-zinc-200 text-zinc-600">{tag}</span>)}</div>
                   </div>
                 </div>

@@ -8,13 +8,13 @@ const projectsData = [
     id: "tripmate",
     title: "TripMate AI",
     description: "AI-powered travel planner with personalized itineraries",
-    tags: ["React", "Django", "Gemini API", "Google Places API"],
+    tags: ["React", "Django", "Gemini API", "OpenStreetMap"],
     fullDescription:
-      "An AI-powered travel planner that generates personalized itineraries using the Gemini API. Integrated Google Places API to recommend top-rated spots with 95% accuracy. Built a real-time, scalable React + Django architecture. Improved API response times and optimized user interactions.",
-    previewUrl: "https://placehold.co/1200x750/1a1a2e/6366f1?text=TripMate+AI",
+      "An AI-powered travel planner that creates personalized itineraries using the Gemini API. Integrated OpenStreetMap (Nominatim) for location search and place recommendations. Built a real-time, scalable React + Django architecture.",
+    previewUrl: "https://trip-ai-mate.vercel.app/",
     color: "#6366f1",
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: "https://github.com/Gaurab4/tripmate",
+    liveUrl: "https://trip-ai-mate.vercel.app/",
   },
   {
     id: "artisanclub",
@@ -48,7 +48,7 @@ export default function Projects() {
           02. PROJECTS
         </p>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-8 animate-fade-in-up opacity-0 [animation-delay:0.05s] [animation-fill-mode:forwards]">
-          Selected Work
+          Recent Work
         </h1>
 
         <div className="grid lg:grid-cols-5 gap-8">
@@ -110,13 +110,12 @@ export default function Projects() {
                 </div>
               </div>
               <div className="relative aspect-video bg-zinc-900 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={selectedProject.previewUrl}
-                  alt={`${selectedProject.title} preview`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+                {selectedProject.liveUrl && selectedProject.liveUrl !== "#" ? (
+                  <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" />
+                ) : (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={selectedProject.previewUrl} alt={`${selectedProject.title} preview`} className="w-full h-full object-cover" loading="lazy" />
+                )}
                 <div
                   className="absolute left-0 right-0 top-0 h-px opacity-20 pointer-events-none animate-scan-line"
                   style={{
@@ -129,7 +128,7 @@ export default function Projects() {
               <div className="flex items-start justify-between mb-2">
                 <h2 className="text-xl font-bold text-zinc-900">{selectedProject.title}</h2>
                 <div className="flex gap-2 shrink-0">
-                  {selectedProject.githubUrl && (
+                  {selectedProject.githubUrl && selectedProject.githubUrl !== "#" && (
                     <a
                       href={selectedProject.githubUrl}
                       className="w-9 h-9 rounded-full border border-zinc-200/80 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-300 transition-colors"
@@ -140,7 +139,7 @@ export default function Projects() {
                       </svg>
                     </a>
                   )}
-                  {selectedProject.liveUrl && (
+                  {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && (
                     <a
                       href={selectedProject.liveUrl}
                       className="w-9 h-9 rounded-full border border-zinc-200/80 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-300 transition-colors"

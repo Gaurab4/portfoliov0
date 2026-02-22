@@ -63,7 +63,7 @@ export default function About() {
             </h1>
             <div className="space-y-4 text-base leading-relaxed text-zinc-600 mb-8">
               <p>
-                I&apos;m a full-stack developer passionate about building performant,
+                I&apos;m a Software Engineer passionate about building performant,
                 scalable, and user-friendly web applications. I specialize in React,
                 Next.js, Django, and Node.js, and enjoy crafting both frontend
                 interfaces and backend systems that deliver real impact.

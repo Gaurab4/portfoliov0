@@ -6,26 +6,40 @@ const experiences = [
     type: "Full-time",
     title: "Software Engineer",
     company: "Bryckel AI",
-    description:
-      "Built a real-time document highlighting system, improving review speed by 60%. Optimized Django REST APIs, cutting response time by 50%+. Automated Excel/PDF report generation with Pandas and ReportLab. Led cross-stack performance initiatives, boosting productivity by 35%.",
-    tags: ["Django", "React", "Python", "Pandas", "ReportLab", "REST APIs"],
+    points: [
+      "Implemented RBAC system for role-based access control",
+      "Built end-to-end onboarding flow for new users",
+      "Architected and implemented 2 separate product line architectures",
+      "Maintained and improved credit flow management",
+      "Designed, created, and optimized REST APIs",
+      "Implemented Excel generation from JSON data using third-party libraries",
+    ],
+    tags: ["React", "Django", "Python", "PostgreSQL", "Pandas", "ReportLab", "REST APIs"],
   },
   {
     period: "Jun 2024 – Nov 2024",
     type: "Full-time",
     title: "Software Engineer",
     company: "Skizaa",
-    description:
-      "Developed responsive UIs with React, including an Infinity Scroll that reduced loading time from 1–2 min to ~3 sec. Collaborated with core team to enhance UX and engagement.",
-    tags: ["React", "JavaScript", "UX", "Performance"],
+    location: "Remote",
+    points: [
+      "Developed dynamic and responsive user interfaces using React.js, enhancing user experience and performance",
+      "Created an efficient Infinity Scroll feature, reducing data loading time by 90% (1–2 min → 2–3 sec)",
+      "Collaborated with core team to ensure seamless UX, driving positive feedback and engagement",
+      "Integrated Mixpanel analytics and session tracking across key modules, enabling data-driven insights that increased user engagement and improved feature adoption by 30%",
+    ],
+    tags: ["React", "Redux", "Java", "JavaScript"],
   },
   {
     period: "Sept 2023 – Jun 2024",
     type: "Internship",
     title: "Frontend Intern",
     company: "Skizaa",
-    description:
-      "Integrated APIs for dashboards, implemented Mixpanel analytics, and fixed core UI bugs. Improved feature adoption by 30% through data-driven iteration.",
+    points: [
+      "Integrated APIs for dashboards",
+      "Implemented Mixpanel analytics",
+      "Fixed core UI bugs across the application",
+    ],
     tags: ["React", "APIs", "Mixpanel", "Analytics", "UI"],
   },
 ];
@@ -63,13 +77,24 @@ export default function Experience() {
                     <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-200 text-zinc-600">
                       {exp.type}
                     </span>
+                    {"location" in exp && exp.location && (
+                      <span className="text-xs text-zinc-500">· {exp.location}</span>
+                    )}
                   </div>
                   <h2 className="text-lg font-semibold text-zinc-900">
                     {exp.title} at {exp.company}
                   </h2>
-                  <p className="text-zinc-600 leading-relaxed mt-2 mb-3">
-                    {exp.description}
-                  </p>
+                  {"points" in exp && exp.points ? (
+                    <ul className="text-zinc-600 leading-relaxed mt-2 mb-3 space-y-1 list-disc list-inside">
+                      {exp.points.map((point, j) => (
+                        <li key={j}>{point}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-zinc-600 leading-relaxed mt-2 mb-3">
+                      {"description" in exp ? (exp as { description: string }).description : ""}
+                    </p>
+                  )}
                   <div className="flex flex-wrap gap-2">
                     {exp.tags.map((tag) => (
                       <span

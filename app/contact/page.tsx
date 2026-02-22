@@ -11,7 +11,7 @@ const contactInfo = [
       </svg>
     ),
     label: "EMAIL",
-    value: "gaurab@example.com",
+    value: "gaurabth200@gmail.com",
   },
   {
     icon: (
