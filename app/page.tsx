@@ -40,7 +40,7 @@ const articles = [
 ];
 
 const contactInfo = [
-  { label: "EMAIL", value: "gaurabth200@gmail.com", href: "mailto:gaurabth200@gmail.com", icon: "mail" },
+  { label: "EMAIL", value: "gaurabth2002@gmail.com", href: "mailto:gaurabth2002@gmail.com", icon: "mail" },
   { label: "PHONE", value: "+91-8909365272", href: "tel:+918909365272", icon: "phone" },
   { label: "LOCATION", value: "Bengaluru, Karnataka, India", icon: "location" },
   { label: "AVAILABILITY", value: "Open to opportunities", icon: "calendar" },
@@ -89,7 +89,7 @@ export default function Home() {
               <path d="M16.633 16.644l-2.402 2.415a3.189 3.189 0 0 1 -4.524 0l-3.77 -3.787a3.223 3.223 0 0 1 0 -4.544l3.77 -3.787a3.189 3.189 0 0 1 4.524 0l2.302 2.313" />
             </svg>
           </a>
-          <a href="mailto:gaurabth200@gmail.com" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="Email">
+          <a href="mailto:gaurabth2002@gmail.com" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="Email">
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           </a>
         </div>
