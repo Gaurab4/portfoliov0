@@ -32,13 +32,6 @@ const skillCategories = [
 
 const fullStack = ["JavaScript", "Python", "React.js", "Next.js", "Tailwind CSS", "GSAP", "Django", "Node.js", "Express", "PostgreSQL", "GraphQL", "REST APIs", "Git"];
 
-const articles = [
-  { tags: ["React", "State Management"], title: "Why I Stopped Using Redux and What I Use Instead", description: "A deep dive into modern React state management — Zustand, Jotai, and React Query patterns.", date: "Feb 2024", readTime: "8 min read" },
-  { tags: ["WebSockets", "CRDT", "Node.js"], title: "Building a Real-Time Collaborative Editor from Scratch", description: "CRDT algorithms, operational transforms, and WebSocket orchestration.", date: "Jan 2024", readTime: "14 min read" },
-  { tags: ["DevOps", "Architecture"], title: "The Architecture Behind Zero-Downtime Deployments", description: "Blue-green deployments, feature flags, and how we ship 50+ times a day.", date: "Dec 2023", readTime: "10 min read" },
-  { tags: ["TypeScript"], title: "TypeScript Tricks That Saved My Codebase", description: "Discriminated unions, template literal types, conditional types.", date: "Nov 2023", readTime: "7 min read" },
-];
-
 const contactInfo = [
   { label: "EMAIL", value: "gaurabth2002@gmail.com", href: "mailto:gaurabth2002@gmail.com", icon: "mail" },
   { label: "PHONE", value: "+91-8909365272", href: "tel:+918909365272", icon: "phone" },
@@ -247,22 +240,10 @@ export default function Home() {
 
       {/* Blogs */}
       <section id="blogs" className="min-h-screen flex flex-col justify-center py-24 bg-[#f0efea] scroll-mt-20">
-        <div className="relative z-10 mx-auto max-w-6xl px-6 w-full">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 w-full text-center">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2">05. WRITING</p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-8">From the Blog</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {articles.map((a) => (
-              <article key={a.title} className="rounded-lg bg-white p-6 shadow-sm border border-zinc-100 hover:border-zinc-200 transition-colors">
-                <div className="flex justify-between items-start mb-3">
-                  <div className="flex flex-wrap gap-2">{a.tags.map((tag) => <span key={tag} className="text-xs px-2 py-0.5 rounded bg-zinc-100 text-zinc-600">{tag}</span>)}</div>
-                  <span className="text-zinc-400"><svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></span>
-                </div>
-                <h3 className="text-lg font-semibold text-zinc-900 mb-2">{a.title}</h3>
-                <p className="text-zinc-600 text-sm leading-relaxed mb-4">{a.description}</p>
-                <p className="text-xs text-zinc-500">{a.date} · {a.readTime}</p>
-              </article>
-            ))}
-          </div>
+          <p className="text-xl text-zinc-500">Coming soon</p>
         </div>
       </section>
 
