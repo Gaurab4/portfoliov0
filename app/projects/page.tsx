@@ -1,16 +1,16 @@
 "use client";
 
 import Header from "../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const projectsData = [
   {
     id: "tripmate",
     title: "TripMate AI",
     description: "AI-powered travel planner with personalized itineraries",
-    tags: ["React", "Django", "Gemini API", "OpenStreetMap"],
+    tags: ["React", "Django", "Gemini API", "OpenStreetMap", "AWS", "EC2", "Docker", "Docker Hub", "RDS", "Kubernetes"],
     fullDescription:
-      "An AI-powered travel planner that creates personalized itineraries using the Gemini API. Integrated OpenStreetMap (Nominatim) for location search and place recommendations. Built a real-time, scalable React + Django architecture.",
+      "An AI-powered travel planner that creates personalized itineraries using the Gemini API. Integrated OpenStreetMap (Nominatim) for location search and place recommendations. Built a real-time, scalable React + Django architecture. Deployed on AWS (EC2), containerized with Docker and images published to Docker Hub, with Amazon RDS for the database and Kubernetes for orchestration.",
     previewUrl: "https://trip-ai-mate.vercel.app/",
     color: "#6366f1",
     githubUrl: "https://github.com/Gaurab4/tripmate",
@@ -28,10 +28,51 @@ const projectsData = [
     githubUrl: "#",
     liveUrl: "#",
   },
+  {
+    id: "todaytaskmanager",
+    title: "Today Task Manager",
+    description: "Task management app for daily productivity",
+    tags: ["TypeScript", "Next.js", "CSS", "JavaScript"],
+    fullDescription:
+      "A lightweight task manager focused on organizing and tracking day-to-day tasks. Built with a frontend-first architecture and deployed for quick access and productivity workflows.",
+    previewUrl: "https://placehold.co/1200x750/0f172a/f59e0b?text=Today+Task+Manager",
+    color: "#f59e0b",
+    githubUrl: "https://github.com/Gaurab4/today-task-manager",
+    liveUrl: "https://today-manager.vercel.app",
+  },
+  {
+    id: "timeleft",
+    title: "TimeLeft",
+    description: "Life calendar iOS app with zero setup",
+    tags: ["Swift", "iOS", "WidgetKit"],
+    fullDescription:
+      "An iOS life-calendar app inspired by The Life Calendar, designed to be simple and ready to use without setup. Built in Swift with companion widget support for quick glanceable progress.",
+    previewUrl: "https://placehold.co/1200x750/0f172a/8b5cf6?text=TimeLeft",
+    color: "#8b5cf6",
+    githubUrl: "https://github.com/Gaurab4/TimeLeft",
+    liveUrl: "#",
+  },
+  {
+    id: "nextcontest",
+    title: "nextContest",
+    description: "Aggregates next coding contests across platforms",
+    tags: ["Swift", "iOS", "Codeforces", "LeetCode"],
+    fullDescription:
+      "An iOS app that helps users quickly find the next upcoming coding contests across platforms like Codeforces, CodeChef, AtCoder, and LeetCode.",
+    previewUrl: "https://placehold.co/1200x750/0f172a/06b6d4?text=nextContest",
+    color: "#06b6d4",
+    githubUrl: "https://github.com/Gaurab4/nextContest",
+    liveUrl: "#",
+  },
 ];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(projectsData[0]);
+  const [previewFailed, setPreviewFailed] = useState(false);
+
+  useEffect(() => {
+    setPreviewFailed(false);
+  }, [selectedProject.id]);
 
   return (
     <div className="min-h-screen relative bg-[#f5f5f5] flex flex-col">
@@ -110,11 +151,18 @@ export default function Projects() {
                 </div>
               </div>
               <div className="relative aspect-video bg-zinc-900 overflow-hidden">
-                {selectedProject.liveUrl && selectedProject.liveUrl !== "#" ? (
-                  <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" />
+                {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && !previewFailed ? (
+                  <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" onError={() => setPreviewFailed(true)} />
                 ) : (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img src={selectedProject.previewUrl} alt={`${selectedProject.title} preview`} className="w-full h-full object-cover" loading="lazy" />
+                )}
+                {previewFailed && selectedProject.liveUrl && selectedProject.liveUrl !== "#" && (
+                  <div className="absolute inset-0 flex items-end justify-center bg-black/35 pb-5">
+                    <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className="rounded-md bg-white/95 px-3 py-1.5 text-xs font-semibold text-zinc-900">
+                      Open Live Demo
+                    </a>
+                  </div>
                 )}
                 <div
                   className="absolute left-0 right-0 top-0 h-px opacity-20 pointer-events-none animate-scan-line"
