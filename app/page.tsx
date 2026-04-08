@@ -3,19 +3,23 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Navbar from "@/components/portfolio/Navbar";
+import { MediumBlogSection } from "@/components/portfolio/MediumBlogSection";
 
-const roleLabels = ["React.js", "Next.js", "Django", "Node.js"];
+const roleLabels = ["React.js", "Next.js", "Python", "Node.js"];
 
 const features = [
   { icon: "code", title: "Clean Code", desc: "Maintainable, well-documented systems" },
-  { icon: "stack", title: "Full Stack", desc: "React.js, Next.js, Django, Node.js" },
+  { icon: "stack", title: "Full Stack", desc: "React.js, Next.js, Python, Node.js" },
   { icon: "bolt", title: "Performance", desc: "API optimization & fast interfaces" },
   { icon: "collab", title: "Real Impact", desc: "Real-time systems & AI-integrated tools" },
 ];
 
 const projectsData = [
-  { id: "tripmate", title: "TripMate AI", description: "AI-powered travel planner with personalized itineraries", tags: ["React", "Django", "Gemini API", "OpenStreetMap"], fullDescription: "An AI-powered travel planner that creates personalized itineraries using the Gemini API. Integrated OpenStreetMap (Nominatim) for location search and place recommendations. Built a real-time, scalable React + Django architecture.", previewUrl: "https://trip-ai-mate.vercel.app/", color: "#6366f1", githubUrl: "https://github.com/Gaurab4/tripmate", liveUrl: "https://trip-ai-mate.vercel.app/" },
+  { id: "tripmate", title: "TripMate AI", description: "AI-powered travel planner with personalized itineraries", tags: ["React", "Django", "Gemini API", "OpenStreetMap", "AWS", "EC2", "Docker", "Docker Hub", "RDS", "Kubernetes"], fullDescription: "An AI-powered travel planner that creates personalized itineraries using the Gemini API. Integrated OpenStreetMap (Nominatim) for location search and place recommendations. Built a real-time, scalable React + Django architecture. Deployed on AWS (EC2), containerized with Docker and images published to Docker Hub, with Amazon RDS for the database and Kubernetes for orchestration.", previewUrl: "https://trip-ai-mate.vercel.app/", color: "#6366f1", githubUrl: "https://github.com/Gaurab4/tripmate", liveUrl: "https://trip-ai-mate.vercel.app/" },
   { id: "artisanclub", title: "ArtisanClub", description: "Project management platform for creative teams", tags: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "Docker"], fullDescription: "A project management and collaboration platform for creative teams. Built task assignment, file sharing, and client portals from scratch. Used Docker to containerize the app for easy deployment.", previewUrl: "https://placehold.co/1200x750/0f172a/22c55e?text=ArtisanClub", color: "#22c55e", githubUrl: "#", liveUrl: "#" },
+  { id: "todaytaskmanager", title: "Today Task Manager", description: "Task management app for daily productivity", tags: ["TypeScript", "Next.js", "CSS", "JavaScript"], fullDescription: "A lightweight task manager focused on organizing and tracking day-to-day tasks. Built with a frontend-first architecture and deployed for quick access and productivity workflows.", previewUrl: "https://placehold.co/1200x750/0f172a/f59e0b?text=Today+Task+Manager", color: "#f59e0b", githubUrl: "https://github.com/Gaurab4/today-task-manager", liveUrl: "https://today-manager.vercel.app" },
+  { id: "timeleft", title: "TimeLeft", description: "Life calendar iOS app with zero setup", tags: ["Swift", "iOS", "WidgetKit"], fullDescription: "An iOS life-calendar app inspired by The Life Calendar, designed to be simple and ready to use without setup. Built in Swift with companion widget support for quick glanceable progress.", previewUrl: "https://placehold.co/1200x750/0f172a/8b5cf6?text=TimeLeft", color: "#8b5cf6", githubUrl: "https://github.com/Gaurab4/TimeLeft", liveUrl: "#" },
+  { id: "nextcontest", title: "nextContest", description: "Aggregates next coding contests across platforms", tags: ["Swift", "iOS", "Codeforces", "LeetCode"], fullDescription: "An iOS app that helps users quickly find the next upcoming coding contests across platforms like Codeforces, CodeChef, AtCoder, and LeetCode.", previewUrl: "https://placehold.co/1200x750/0f172a/06b6d4?text=nextContest", color: "#06b6d4", githubUrl: "https://github.com/Gaurab4/nextContest", liveUrl: "#" },
 ];
 
 const experiences = [
@@ -28,9 +32,10 @@ const skillCategories = [
   { title: "LANGUAGES", skills: [{ name: "JavaScript", level: 90 }, { name: "Python", level: 85 }, { name: "C++", level: 80 }, { name: "Java", level: 75 }] },
   { title: "FRONTEND", skills: [{ name: "React.js", level: 92 }, { name: "Next.js", level: 90 }, { name: "Tailwind CSS", level: 88 }, { name: "GSAP", level: 78 }] },
   { title: "BACKEND", skills: [{ name: "Django", level: 85 }, { name: "Node.js", level: 90 }, { name: "Express", level: 88 }, { name: "PostgreSQL", level: 80 }] },
+  { title: "CLOUD & DEVOPS", skills: [{ name: "AWS", level: 85 }, { name: "EC2", level: 84 }, { name: "Docker", level: 88 }, { name: "Docker Hub", level: 82 }, { name: "Amazon RDS", level: 83 }, { name: "Kubernetes", level: 80 }] },
 ];
 
-const fullStack = ["JavaScript", "Python", "React.js", "Next.js", "Tailwind CSS", "GSAP", "Django", "Node.js", "Express", "PostgreSQL", "GraphQL", "REST APIs", "Git"];
+const fullStack = ["JavaScript", "Python", "React.js", "Next.js", "Tailwind CSS", "GSAP", "Django", "Node.js", "Express", "PostgreSQL", "GraphQL", "REST APIs", "Git", "AWS", "EC2", "Docker", "Docker Hub", "Amazon RDS", "Kubernetes"];
 
 const contactInfo = [
   { label: "EMAIL", value: "gaurabth2002@gmail.com", href: "mailto:gaurabth2002@gmail.com", icon: "mail" },
@@ -55,19 +60,20 @@ export default function Home() {
       <Navbar />
 
       {/* Hero */}
-      <section id="hero" className="min-h-screen flex flex-col relative z-10 scroll-mt-20 pt-16">
-        <main className="flex flex-1 flex-col items-center justify-center px-6 pt-10 pb-24 text-center">
+      <section id="hero" className="relative z-10 flex min-h-screen flex-col scroll-mt-20 pt-16">
+        <main className="flex flex-1 flex-col items-center justify-center px-6 text-center">
           <h1 className="mb-2 text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl md:text-6xl">Gaurab</h1>
           <p key={roleIndex} className="mb-6 min-h-[1.75rem] text-lg text-zinc-600 animate-fade-in">{roleLabels[roleIndex]}</p>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-zinc-500">
-            Software Engineer building performant, scalable web apps. React · Next.js · Django · Node.js
+            Software Engineer building performant, scalable web apps. React · Next.js · Python · Node.js
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link href="/#projects" className="inline-flex h-12 items-center justify-center rounded-lg bg-zinc-900 px-6 text-sm font-semibold text-white transition-colors hover:bg-zinc-700">View Projects</Link>
             <Link href="/#contact" className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-900 bg-transparent px-6 text-sm font-semibold text-zinc-900 transition-colors hover:bg-zinc-900/5">Get In Touch</Link>
           </div>
         </main>
-        <div className="relative z-10 flex justify-center gap-4 pb-8">
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center gap-6 pb-8 sm:pb-10">
+        <div className="pointer-events-auto flex justify-center gap-4">
           <a href="https://github.com/Gaurab4" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded border border-zinc-300 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-700" aria-label="GitHub">
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23 9.585-2.655 19.965-.885 19.965 0 0 1 3.3-1.23c.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg>
           </a>
@@ -86,10 +92,11 @@ export default function Home() {
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           </a>
         </div>
-        <div className="relative z-10 flex justify-center pb-20">
-          <a href="#about" className="animate-bounce text-zinc-400 hover:text-zinc-600">
+        <div className="pointer-events-auto flex justify-center">
+          <a href="#about" className="animate-bounce text-zinc-400 hover:text-zinc-600" aria-label="Scroll to about">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7" /></svg>
           </a>
+        </div>
         </div>
       </section>
 
@@ -101,7 +108,7 @@ export default function Home() {
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2">01. ABOUT ME</p>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-6">Crafting Digital Experiences</h2>
               <div className="space-y-4 text-base leading-relaxed text-zinc-600 mb-8">
-                <p>I&apos;m a Software Engineer passionate about building performant, scalable web applications. I specialize in React, Next.js, Django, and Node.js, and enjoy crafting both frontend interfaces and backend systems that deliver real impact.</p>
+                <p>I&apos;m a Software Engineer passionate about building performant, scalable web applications. I specialize in React, Next.js, Python, and Node.js, and enjoy crafting both frontend interfaces and backend systems that deliver real impact.</p>
                 <p>Over the past year, I&apos;ve worked on real-time document systems, API optimization, and AI-integrated tools. I love turning complex problems into clean, efficient code.</p>
               </div>
             </div>
@@ -220,9 +227,11 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2">04. SKILLS</p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-10">Technical Arsenal</h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-[90rem] px-6 sm:px-8 lg:px-12">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 mb-12">
             {skillCategories.map((cat) => (
-              <div key={cat.title} className="rounded-lg bg-white p-6 shadow-sm border border-zinc-100">
+              <div key={cat.title} className="rounded-lg bg-white p-6 sm:p-7 shadow-sm border border-zinc-100 min-w-0">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4">{cat.title}</h3>
                 <div className="space-y-4">{cat.skills.map((s) => (
                   <div key={s.name}>
@@ -233,6 +242,8 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="relative z-10 mx-auto max-w-6xl px-6">
           <h3 className="text-center text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4">FULL TECH STACK</h3>
           <div className="flex flex-wrap justify-center gap-2">{fullStack.map((tech) => <span key={tech} className="px-3 py-1.5 rounded bg-white border border-zinc-100 text-sm text-zinc-700 shadow-sm">{tech}</span>)}</div>
         </div>
@@ -240,16 +251,28 @@ export default function Home() {
 
       {/* Blogs */}
       <section id="blogs" className="min-h-screen flex flex-col justify-center py-24 bg-[#f0efea] scroll-mt-20">
-        <div className="relative z-10 mx-auto max-w-6xl px-6 w-full text-center">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 w-full">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2">05. WRITING</p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-8">From the Blog</h2>
-          <p className="text-xl text-zinc-500">Coming soon</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">From the Blog</h2>
+          <p className="text-zinc-600 mb-10 max-w-xl">
+            Latest posts from{" "}
+            <a
+              href="https://medium.com/@gaurabth2002"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-zinc-900 underline underline-offset-2 hover:text-zinc-700"
+            >
+              Medium
+            </a>
+            .
+          </p>
+          <MediumBlogSection />
         </div>
       </section>
 
       {/* Contact */}
       <section id="contact" className="min-h-screen pt-24 pb-12 bg-[#f5f5f5] scroll-mt-20">
-        <div className="relative z-10 mx-auto max-w-5xl px-6">
+        <div className="relative z-10 mx-auto max-w-6xl px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2">06. CONTACT</p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">Let&apos;s Build Something Together</h2>
           <p className="text-zinc-600 mb-10 max-w-xl">Whether you have a project in mind, an idea to explore, or just want to say hi — my inbox is always open.</p>
@@ -282,7 +305,7 @@ export default function Home() {
       </section>
 
       <footer className="relative z-10 border-t border-black/[0.06] py-4 text-center text-sm text-zinc-500 bg-[#f5f5f5]">
-        <p>Edit with &hearts; in your portfolio</p>
+        <p>Built with &hearts; by Gaurab</p>
       </footer>
     </div>
   );

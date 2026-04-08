@@ -18,7 +18,7 @@ const features = [
       </svg>
     ),
     title: "Full Stack",
-    desc: "React.js, Next.js, Django, Node.js",
+    desc: "React.js, Next.js, Python, Node.js",
   },
   {
     icon: (
@@ -65,7 +65,7 @@ export default function About() {
               <p>
                 I&apos;m a Software Engineer passionate about building performant,
                 scalable, and user-friendly web applications. I specialize in React,
-                Next.js, Django, and Node.js, and enjoy crafting both frontend
+                Next.js, Python, and Node.js, and enjoy crafting both frontend
                 interfaces and backend systems that deliver real impact.
               </p>
               <p>

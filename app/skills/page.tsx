@@ -57,56 +57,62 @@ export default function Skills() {
         }}
       />
       <Header />
-      <main className="relative z-10 flex-1 mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2 animate-fade-in-up">
-          04. SKILLS
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-10 animate-fade-in-up opacity-0 [animation-delay:0.05s] [animation-fill-mode:forwards]">
-          Technical Arsenal
-        </h1>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {skillCategories.map((cat, i) => (
-            <div
-              key={cat.title}
-              className="rounded-lg bg-white p-6 shadow-sm border border-zinc-100 animate-fade-in-up opacity-0"
-              style={{ animationDelay: `${0.1 + i * 0.1}s`, animationFillMode: "forwards" }}
-            >
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4">
-                {cat.title}
-              </h3>
-              <div className="space-y-4">
-                {cat.skills.map((s) => (
-                  <div key={s.name}>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="text-zinc-700">{s.name}</span>
-                      <span className="text-zinc-500 font-medium">{s.level}%</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-zinc-100 overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-zinc-700"
-                        style={{ width: `${s.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+      <main className="relative z-10 flex-1 w-full pt-24 pb-12">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 mb-2 animate-fade-in-up">
+            04. SKILLS
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-10 animate-fade-in-up opacity-0 [animation-delay:0.05s] [animation-fill-mode:forwards]">
+            Technical Arsenal
+          </h1>
         </div>
 
-        <h3 className="text-center text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4">
-          FULL TECH STACK
-        </h3>
-        <div className="flex flex-wrap justify-center gap-2">
-          {fullStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1.5 rounded bg-white border border-zinc-100 text-sm text-zinc-700 shadow-sm"
-            >
-              {tech}
-            </span>
-          ))}
+        <div className="mx-auto w-full max-w-[90rem] px-6 sm:px-8 lg:px-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+            {skillCategories.map((cat, i) => (
+              <div
+                key={cat.title}
+                className="rounded-lg bg-white p-6 sm:p-7 shadow-sm border border-zinc-100 min-w-0 animate-fade-in-up opacity-0"
+                style={{ animationDelay: `${0.1 + i * 0.1}s`, animationFillMode: "forwards" }}
+              >
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4">
+                  {cat.title}
+                </h3>
+                <div className="space-y-4">
+                  {cat.skills.map((s) => (
+                    <div key={s.name}>
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-zinc-700">{s.name}</span>
+                        <span className="text-zinc-500 font-medium">{s.level}%</span>
+                      </div>
+                      <div className="h-2 rounded-full bg-zinc-100 overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-zinc-700"
+                          style={{ width: `${s.level}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-6xl px-6">
+          <h3 className="text-center text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4">
+            FULL TECH STACK
+          </h3>
+          <div className="flex flex-wrap justify-center gap-2">
+            {fullStack.map((tech) => (
+              <span
+                key={tech}
+                className="px-3 py-1.5 rounded bg-white border border-zinc-100 text-sm text-zinc-700 shadow-sm"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </main>
     </div>
