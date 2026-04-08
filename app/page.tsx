@@ -47,6 +47,7 @@ const contactInfo = [
 export default function Home() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState(projectsData[0]);
+  const [previewFailed, setPreviewFailed] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,6 +55,10 @@ export default function Home() {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    setPreviewFailed(false);
+  }, [selectedProject.id]);
 
   return (
     <div className="relative bg-[#f5f5f5]">
@@ -159,11 +164,18 @@ export default function Home() {
                   <div className="flex-1 mx-4 py-1 px-3 rounded bg-zinc-800 text-zinc-500 text-xs truncate">{selectedProject.previewUrl}</div>
                 </div>
                 <div className="relative aspect-video bg-zinc-900 overflow-hidden">
-                  {selectedProject.liveUrl && selectedProject.liveUrl !== "#" ? (
-                    <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" />
+                  {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && !previewFailed ? (
+                    <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" onError={() => setPreviewFailed(true)} />
                   ) : (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img src={selectedProject.previewUrl} alt={`${selectedProject.title} preview`} className="w-full h-full object-cover" loading="lazy" />
+                  )}
+                  {previewFailed && selectedProject.liveUrl && selectedProject.liveUrl !== "#" && (
+                    <div className="absolute inset-0 flex items-end justify-center bg-black/35 pb-5">
+                      <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className="rounded-md bg-white/95 px-3 py-1.5 text-xs font-semibold text-zinc-900">
+                        Open Live Demo
+                      </a>
+                    </div>
                   )}
                   <div className="absolute left-0 right-0 top-0 h-px opacity-20 pointer-events-none animate-scan-line" style={{ background: `linear-gradient(90deg, transparent, ${selectedProject.color}, transparent)` }} />
                 </div>

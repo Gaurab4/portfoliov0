@@ -1,7 +1,7 @@
 "use client";
 
 import Header from "../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const projectsData = [
   {
@@ -68,6 +68,11 @@ const projectsData = [
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(projectsData[0]);
+  const [previewFailed, setPreviewFailed] = useState(false);
+
+  useEffect(() => {
+    setPreviewFailed(false);
+  }, [selectedProject.id]);
 
   return (
     <div className="min-h-screen relative bg-[#f5f5f5] flex flex-col">
@@ -146,11 +151,18 @@ export default function Projects() {
                 </div>
               </div>
               <div className="relative aspect-video bg-zinc-900 overflow-hidden">
-                {selectedProject.liveUrl && selectedProject.liveUrl !== "#" ? (
-                  <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" />
+                {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && !previewFailed ? (
+                  <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" onError={() => setPreviewFailed(true)} />
                 ) : (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img src={selectedProject.previewUrl} alt={`${selectedProject.title} preview`} className="w-full h-full object-cover" loading="lazy" />
+                )}
+                {previewFailed && selectedProject.liveUrl && selectedProject.liveUrl !== "#" && (
+                  <div className="absolute inset-0 flex items-end justify-center bg-black/35 pb-5">
+                    <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className="rounded-md bg-white/95 px-3 py-1.5 text-xs font-semibold text-zinc-900">
+                      Open Live Demo
+                    </a>
+                  </div>
                 )}
                 <div
                   className="absolute left-0 right-0 top-0 h-px opacity-20 pointer-events-none animate-scan-line"
