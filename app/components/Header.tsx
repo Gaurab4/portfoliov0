@@ -19,13 +19,24 @@ export default function Header() {
   const isHomePage = pathname === "/";
 
   const getLinkHref = (link: (typeof navLinks)[0]) => {
-    if (isHomePage) return link.sectionId === "hero" ? "/" : `/#${link.sectionId}`;
-    return link.sectionId === "hero" ? "/" : `/${link.sectionId}`;
+    if (link.sectionId === "hero") return "/#hero";
+    if (isHomePage) return `/#${link.sectionId}`;
+    return `/${link.sectionId}`;
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: (typeof navLinks)[0]) => {
+    if (link.sectionId !== "hero" || !isHomePage) return;
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.replaceState(null, "", "/#hero");
   };
 
   const isActive = (link: (typeof navLinks)[0]) => {
-    if (isHomePage) return activeSection === link.sectionId;
-    return pathname === `/${link.sectionId}` || (pathname === "/" && link.sectionId === "hero");
+    if (isHomePage) {
+      if (link.sectionId === "hero") return activeSection === "hero" || activeSection === "about";
+      return activeSection === link.sectionId;
+    }
+    return pathname === `/${link.sectionId}`;
   };
 
   return (

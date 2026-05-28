@@ -32,8 +32,11 @@ export default function Navbar() {
   };
 
   const isActive = (link: (typeof navLinks)[0]) => {
-    if (isHomePage) return activeSection === link.sectionId;
-    return pathname === `/${link.sectionId}` || (pathname === "/" && link.sectionId === "hero");
+    if (isHomePage) {
+      if (link.sectionId === "hero") return activeSection === "hero" || activeSection === "about";
+      return activeSection === link.sectionId;
+    }
+    return pathname === `/${link.sectionId}`;
   };
 
   return (
