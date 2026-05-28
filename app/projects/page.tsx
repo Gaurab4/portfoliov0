@@ -1,7 +1,7 @@
 "use client";
 
 import Header from "../components/Header";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const projectsData = [
   {
@@ -94,9 +94,10 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(projectsData[0]);
   const [previewFailed, setPreviewFailed] = useState(false);
 
-  useEffect(() => {
+  const selectProject = (project: (typeof projectsData)[0]) => {
+    setSelectedProject(project);
     setPreviewFailed(false);
-  }, [selectedProject.id]);
+  };
 
   return (
     <div className="min-h-screen relative bg-[#f5f5f5] flex flex-col">
@@ -122,7 +123,7 @@ export default function Projects() {
               {projectsData.map((p, i) => (
                 <button
                   key={p.id}
-                  onClick={() => setSelectedProject(p)}
+                  onClick={() => selectProject(p)}
                   className={`snap-start shrink-0 w-[260px] sm:w-[280px] lg:w-[calc((100%-1.25rem*5)/6)] text-left rounded-lg p-4 border border-zinc-200/80 transition-all duration-200 animate-fade-in-up opacity-0 ${
                     selectedProject.id === p.id
                       ? "bg-zinc-200/80 border-zinc-300 shadow-sm"

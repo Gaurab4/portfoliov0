@@ -58,9 +58,10 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
+  const selectProject = (project: (typeof projectsData)[0]) => {
+    setSelectedProject(project);
     setPreviewFailed(false);
-  }, [selectedProject.id]);
+  };
 
   return (
     <div className="relative bg-zinc-50">
@@ -143,7 +144,7 @@ export default function Home() {
                 {projectsData.map((p) => (
                   <button
                     key={p.id}
-                    onClick={() => setSelectedProject(p)}
+                    onClick={() => selectProject(p)}
                     className={`snap-start shrink-0 w-[260px] sm:w-[280px] lg:w-[calc((100%-1.25rem*5)/6)] text-left rounded-lg p-4 border transition-all duration-200 ${selectedProject.id === p.id ? "bg-emerald-50/80 border-emerald-300/80 shadow-sm" : "bg-zinc-100/70 border-zinc-200/80 hover:bg-emerald-50/40 hover:border-emerald-200/60"}`}
                   >
                     <h3 className="font-semibold text-zinc-900 truncate">{p.title}</h3>
