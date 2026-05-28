@@ -20,12 +20,33 @@ const skillCategories = [
     ],
   },
   {
-    title: "BACKEND",
+    title: "BACKEND & APIs",
     skills: [
+      { name: "REST APIs", level: 90 },
       { name: "Django", level: 85 },
       { name: "Node.js", level: 90 },
       { name: "Express", level: 88 },
       { name: "PostgreSQL", level: 80 },
+    ],
+  },
+  {
+    title: "CLOUD & DEVOPS",
+    skills: [
+      { name: "AWS", level: 85 },
+      { name: "CI/CD Pipelines", level: 84 },
+      { name: "Docker", level: 88 },
+      { name: "EC2", level: 84 },
+      { name: "Amazon RDS", level: 83 },
+      { name: "Kubernetes", level: 80 },
+    ],
+  },
+  {
+    title: "AI & PLATFORMS",
+    skills: [
+      { name: "Claude Agents", level: 86 },
+      { name: "Prompt Engineering", level: 88 },
+      { name: "Microsoft 365 Add-ins", level: 82 },
+      { name: "Gemini API", level: 80 },
     ],
   },
 ];
@@ -35,14 +56,17 @@ const fullStack = [
   "Python",
   "React.js",
   "Next.js",
-  "Tailwind CSS",
-  "GSAP",
   "Django",
   "Node.js",
-  "Express",
-  "PostgreSQL",
-  "GraphQL",
   "REST APIs",
+  "PostgreSQL",
+  "AWS",
+  "CI/CD",
+  "Docker",
+  "Kubernetes",
+  "Claude Agents",
+  "Prompt Engineering",
+  "Microsoft 365 Add-ins",
   "Git",
 ];
 
@@ -68,7 +92,7 @@ export default function Skills() {
         </div>
 
         <div className="mx-auto w-full max-w-[90rem] px-6 sm:px-8 lg:px-12">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 mb-12">
             {skillCategories.map((cat, i) => (
               <div
                 key={cat.title}

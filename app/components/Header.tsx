@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import { useScrollSpy } from "../hooks/useScrollSpy";
 
 const navLinks = [
-  { href: "/", sectionId: "hero", label: "Home" },
-  { href: "/#about", sectionId: "about", label: "About" },
+  { href: "/#hero", sectionId: "hero", label: "Home" },
   { href: "/#projects", sectionId: "projects", label: "Projects" },
   { href: "/#experience", sectionId: "experience", label: "Experience" },
   { href: "/#skills", sectionId: "skills", label: "Skills" },
@@ -33,7 +32,8 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/[0.06] bg-[#f5f5f5]/95 backdrop-blur-sm animate-fade-in-down">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
-          href="/"
+          href="/#hero"
+          onClick={(e) => handleNavClick(e, navLinks[0])}
           className="text-sm font-semibold tracking-tight text-zinc-900 transition-opacity hover:opacity-80"
         >
           {"<gaurab.dev />"}
@@ -46,6 +46,7 @@ export default function Header() {
               <Link
                 key={link.sectionId}
                 href={linkHref}
+                onClick={(e) => handleNavClick(e, link)}
                 className={`text-xs font-medium uppercase tracking-widest transition-colors hover:text-zinc-900 ${
                   active ? "text-zinc-900 underline underline-offset-4" : "text-zinc-500"
                 }`}
