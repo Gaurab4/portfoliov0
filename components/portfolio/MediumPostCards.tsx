@@ -51,7 +51,7 @@ export function MediumPostCards({
           href={post.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="block rounded-lg bg-white/80 border border-zinc-200/80 p-5 sm:p-6 transition-colors hover:border-zinc-300 hover:bg-white shadow-sm h-full flex flex-col"
+          className="block rounded-lg bg-zinc-100/60 border border-zinc-200/60 p-5 sm:p-6 transition-colors hover:border-zinc-300/80 hover:bg-zinc-100/80 h-full flex flex-col"
         >
           <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-500 mb-2">
             {formatDate(post.pubDate) ? (

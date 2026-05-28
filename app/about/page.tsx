@@ -18,7 +18,7 @@ const features = [
       </svg>
     ),
     title: "Full Stack",
-    desc: "React.js, Next.js, Python, Node.js",
+    desc: "React, Next.js, Python, REST APIs & backends",
   },
   {
     icon: (
@@ -26,8 +26,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    title: "Performance",
-    desc: "API optimization & fast interfaces",
+    title: "Cloud & DevOps",
+    desc: "AWS, Docker & CI/CD pipelines",
   },
   {
     icon: (
@@ -35,8 +35,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     ),
-    title: "Real Impact",
-    desc: "Real-time systems & AI-integrated tools",
+    title: "AI & Platforms",
+    desc: "Claude agents, prompts & M365 add-ins",
   },
 ];
 
@@ -63,16 +63,14 @@ export default function About() {
             </h1>
             <div className="space-y-4 text-base leading-relaxed text-zinc-600 mb-8">
               <p>
-                I&apos;m a Software Engineer passionate about building performant,
-                scalable, and user-friendly web applications. I specialize in React,
-                Next.js, Python, and Node.js, and enjoy crafting both frontend
-                interfaces and backend systems that deliver real impact.
+                I&apos;m a full-stack Software Engineer building across frontend, backend,
+                and cloud. I work with React and Next.js, design REST APIs, deploy on AWS,
+                and maintain CI/CD pipelines — not just UI work.
               </p>
               <p>
-                Over the past year, I&apos;ve worked on real-time document systems,
-                API optimization, and AI-integrated tools. I love turning complex
-                problems into clean, efficient code — and continuously improving the
-                user experience through thoughtful engineering.
+                I also build Microsoft 365 workspace add-ins, create Claude-based agents,
+                and write production prompts for AI features. I enjoy turning complex
+                product requirements into reliable, scalable systems.
               </p>
             </div>
           

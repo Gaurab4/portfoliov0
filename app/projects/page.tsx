@@ -17,6 +17,30 @@ const projectsData = [
     liveUrl: "https://trip-ai-mate.vercel.app/",
   },
   {
+    id: "shanksportfolio",
+    title: "Shashank Film Portfolio",
+    description: "Filmmaker portfolio showcasing creative work",
+    tags: ["Next.js", "React", "TypeScript"],
+    fullDescription:
+      "A cinematic portfolio website for filmmaker Shashank Aswal, built to showcase films, reels, and creative projects with an immersive layout and smooth project browsing.",
+    previewUrl: "https://shashank-film-portfolio.vercel.app/",
+    color: "#10b981",
+    githubUrl: "https://github.com/Gaurab4/shanks-portfolio",
+    liveUrl: "https://shashank-film-portfolio.vercel.app/",
+  },
+  {
+    id: "hkoven",
+    title: "HK Oven",
+    description: "Pizza & pasta restaurant website",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    fullDescription:
+      "A restaurant website built for HK Oven Pizza & Pasta, featuring menu highlights, brand storytelling, and a clean customer experience tailored for a local pizza restaurant.",
+    previewUrl: "https://hkoven.vercel.app/",
+    color: "#22c55e",
+    githubUrl: "https://github.com/Gaurab4/hk-oven",
+    liveUrl: "https://hkoven.vercel.app/",
+  },
+  {
     id: "artisanclub",
     title: "ArtisanClub",
     description: "Project management platform for creative teams",
@@ -92,70 +116,75 @@ export default function Projects() {
           Recent Work
         </h1>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-2 space-y-3">
-            {projectsData.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => setSelectedProject(p)}
-                className={`w-full text-left rounded-lg p-4 border border-zinc-200/80 transition-all duration-200 animate-fade-in-up opacity-0 ${
-                  selectedProject.id === p.id
-                    ? "bg-zinc-200/80 border-zinc-300"
-                    : "bg-white hover:bg-zinc-50 hover:border-zinc-300"
-                }`}
-                style={{ animationDelay: `${0.1 + i * 0.08}s`, animationFillMode: "forwards" }}
-              >
-                <div className="flex justify-between items-start gap-4">
-                  <div>
-                    <h3 className="font-semibold text-zinc-900">{p.title}</h3>
-                    <p className="text-sm text-zinc-600 mt-1">{p.description}</p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {p.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-2 py-0.5 rounded border border-zinc-200/80 bg-zinc-100/80 text-zinc-600"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                      {p.tags.length > 3 && (
-                        <span className="text-xs text-zinc-500">+{p.tags.length - 3}</span>
-                      )}
-                    </div>
+        <div className="space-y-6">
+          <div className="overflow-x-auto pb-2 -mx-1 px-1 scroll-smooth [scrollbar-width:thin]">
+            <div className="flex gap-3 w-max lg:w-full snap-x snap-mandatory">
+              {projectsData.map((p, i) => (
+                <button
+                  key={p.id}
+                  onClick={() => setSelectedProject(p)}
+                  className={`snap-start shrink-0 w-[260px] sm:w-[280px] lg:w-[calc((100%-1.25rem*5)/6)] text-left rounded-lg p-4 border border-zinc-200/80 transition-all duration-200 animate-fade-in-up opacity-0 ${
+                    selectedProject.id === p.id
+                      ? "bg-zinc-200/80 border-zinc-300 shadow-sm"
+                      : "bg-white hover:bg-zinc-50 hover:border-zinc-300"
+                  }`}
+                  style={{ animationDelay: `${0.1 + i * 0.08}s`, animationFillMode: "forwards" }}
+                >
+                  <h3 className="font-semibold text-zinc-900 truncate">{p.title}</h3>
+                  <p className="text-sm text-zinc-600 mt-1 line-clamp-2">{p.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {p.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-0.5 rounded border border-zinc-200/80 bg-zinc-100/80 text-zinc-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {p.tags.length > 3 && (
+                      <span className="text-xs text-zinc-500">+{p.tags.length - 3}</span>
+                    )}
                   </div>
-                  <svg
-                    className={`h-5 w-5 shrink-0 text-zinc-500 ${
-                      selectedProject.id === p.id ? "rotate-90" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </button>
-            ))}
+                </button>
+              ))}
+            </div>
           </div>
+          {projectsData.length > 6 && (
+            <p className="text-xs text-zinc-500 -mt-2">Scroll right to see more projects →</p>
+          )}
 
-          <div className="lg:col-span-3 space-y-4">
-            <div className="rounded-lg overflow-hidden bg-zinc-900 border border-zinc-700 animate-fade-in-up opacity-0 [animation-delay:0.2s] [animation-fill-mode:forwards]">
-              <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 border-b border-zinc-700">
+          <div className="grid md:grid-cols-2 gap-4 items-stretch min-h-[300px] md:min-h-[340px] animate-fade-in-up opacity-0 [animation-delay:0.2s] [animation-fill-mode:forwards]">
+            <div className="flex flex-col rounded-lg overflow-hidden bg-zinc-900 border border-zinc-700 min-h-[260px] md:min-h-0">
+              <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 border-b border-zinc-700 shrink-0">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/80" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                   <div className="w-3 h-3 rounded-full bg-green-500/80" />
                 </div>
                 <div className="flex-1 mx-4 py-1 px-3 rounded bg-zinc-800 text-zinc-500 text-xs truncate">
-                  {selectedProject.previewUrl}
+                  {selectedProject.liveUrl && selectedProject.liveUrl !== "#" ? selectedProject.liveUrl : "preview — source code"}
                 </div>
               </div>
-              <div className="relative aspect-video bg-zinc-900 overflow-hidden">
+              <div className="relative flex-1 min-h-[200px] bg-zinc-900 overflow-hidden">
                 {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && !previewFailed ? (
-                  <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute w-[133.33%] h-[133.33%] border-0 origin-top-left scale-75" onError={() => setPreviewFailed(true)} />
+                  <iframe src={selectedProject.liveUrl} title={`${selectedProject.title} live preview`} className="absolute inset-0 w-full h-full border-0" onError={() => setPreviewFailed(true)} />
                 ) : (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img src={selectedProject.previewUrl} alt={`${selectedProject.title} preview`} className="w-full h-full object-cover" loading="lazy" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center" style={{ background: `linear-gradient(145deg, #18181b 0%, #27272a 50%, ${selectedProject.color}22 100%)` }}>
+                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+                      <svg className="h-6 w-6 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <p className="font-semibold text-white">{selectedProject.title}</p>
+                    <p className="mt-1 text-sm text-zinc-400">
+                      {previewFailed && selectedProject.liveUrl && selectedProject.liveUrl !== "#" ? "Preview unavailable in browser" : "No public live demo yet"}
+                    </p>
+                    {selectedProject.githubUrl && selectedProject.githubUrl !== "#" && (
+                      <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer" className="mt-4 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-300 hover:bg-emerald-500/20 transition-colors">
+                        View on GitHub
+                      </a>
+                    )}
+                  </div>
                 )}
                 {previewFailed && selectedProject.liveUrl && selectedProject.liveUrl !== "#" && (
                   <div className="absolute inset-0 flex items-end justify-center bg-black/35 pb-5">
@@ -172,8 +201,8 @@ export default function Projects() {
                 />
               </div>
             </div>
-            <div className="rounded-lg bg-white p-5 border border-zinc-200/80 animate-fade-in-up opacity-0 [animation-delay:0.28s] [animation-fill-mode:forwards]">
-              <div className="flex items-start justify-between mb-2">
+            <div className="flex flex-col rounded-lg bg-white p-5 border border-zinc-200/80 min-h-[260px] md:min-h-0">
+              <div className="flex items-start justify-between mb-2 shrink-0">
                 <h2 className="text-xl font-bold text-zinc-900">{selectedProject.title}</h2>
                 <div className="flex gap-2 shrink-0">
                   {selectedProject.githubUrl && selectedProject.githubUrl !== "#" && (
@@ -200,8 +229,8 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-              <p className="text-zinc-600 leading-relaxed mb-4">{selectedProject.fullDescription}</p>
-              <div className="flex flex-wrap gap-2">
+              <p className="text-zinc-600 leading-relaxed mb-4 flex-1">{selectedProject.fullDescription}</p>
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {selectedProject.tags.map((tag) => (
                   <span
                     key={tag}

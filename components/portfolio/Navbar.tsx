@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 const navLinks = [
-  { href: "/", sectionId: "hero", label: "Home" },
-  { href: "/#about", sectionId: "about", label: "About" },
+  { href: "/#hero", sectionId: "hero", label: "Home" },
   { href: "/#projects", sectionId: "projects", label: "Projects" },
   { href: "/#experience", sectionId: "experience", label: "Experience" },
   { href: "/#skills", sectionId: "skills", label: "Skills" },
@@ -20,8 +19,16 @@ export default function Navbar() {
   const isHomePage = pathname === "/";
 
   const getLinkHref = (link: (typeof navLinks)[0]) => {
-    if (isHomePage) return link.sectionId === "hero" ? "/" : `/#${link.sectionId}`;
-    return link.sectionId === "hero" ? "/" : `/${link.sectionId}`;
+    if (link.sectionId === "hero") return "/#hero";
+    if (isHomePage) return `/#${link.sectionId}`;
+    return `/${link.sectionId}`;
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: (typeof navLinks)[0]) => {
+    if (link.sectionId !== "hero" || !isHomePage) return;
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.replaceState(null, "", "/#hero");
   };
 
   const isActive = (link: (typeof navLinks)[0]) => {
@@ -30,11 +37,12 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/[0.06] bg-[#f5f5f5]/95 backdrop-blur-sm animate-fade-in-down">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-emerald-900/40 bg-zinc-950/90 backdrop-blur-sm animate-fade-in-down">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-6 py-4">
         <Link
-          href="/"
-          className="text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80"
+          href="/#hero"
+          onClick={(e) => handleNavClick(e, navLinks[0])}
+          className="text-sm font-semibold tracking-tight text-emerald-400 transition-opacity hover:opacity-80"
         >
           {"<gaurab.dev />"}
         </Link>
@@ -46,8 +54,9 @@ export default function Navbar() {
               <Link
                 key={link.sectionId}
                 href={linkHref}
-                className={`text-xs font-medium uppercase tracking-widest transition-colors hover:text-foreground ${
-                  active ? "text-foreground underline underline-offset-4" : "text-zinc-500"
+                onClick={(e) => handleNavClick(e, link)}
+                className={`text-xs font-medium uppercase tracking-widest transition-colors hover:text-emerald-300 ${
+                  active ? "text-emerald-400 underline underline-offset-4" : "text-zinc-400"
                 }`}
               >
                 {link.label}
