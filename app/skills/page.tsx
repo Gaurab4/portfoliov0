@@ -4,52 +4,56 @@ const skillCategories = [
   {
     title: "LANGUAGES",
     skills: [
-      { name: "JavaScript", level: 90 },
-      { name: "Python", level: 85 },
-      { name: "C++", level: 80 },
-      { name: "Java", level: 75 },
+      { name: "JavaScript", years: 3 },
+      { name: "Python", years: 2 },
+      { name: "C++", years: 3 },
+      { name: "Java", years: 2 },
     ],
   },
   {
     title: "FRONTEND",
     skills: [
-      { name: "React.js", level: 92 },
-      { name: "Next.js", level: 90 },
-      { name: "Tailwind CSS", level: 88 },
-      { name: "GSAP", level: 78 },
+      { name: "React.js", years: 3 },
+      { name: "Next.js", years: 2 },
+      { name: "Tailwind CSS", years: 2 },
+      { name: "GSAP", years: 1 },
     ],
   },
   {
     title: "BACKEND & APIs",
     skills: [
-      { name: "REST APIs", level: 90 },
-      { name: "Django", level: 85 },
-      { name: "Node.js", level: 90 },
-      { name: "Express", level: 88 },
-      { name: "PostgreSQL", level: 80 },
+      { name: "REST APIs", years: 2 },
+      { name: "Django", years: 2 },
+      { name: "Node.js", years: 2 },
+      { name: "Express", years: 2 },
+      { name: "PostgreSQL", years: 2 },
     ],
   },
   {
     title: "CLOUD & DEVOPS",
     skills: [
-      { name: "AWS", level: 85 },
-      { name: "CI/CD Pipelines", level: 84 },
-      { name: "Docker", level: 88 },
-      { name: "EC2", level: 84 },
-      { name: "Amazon RDS", level: 83 },
-      { name: "Kubernetes", level: 80 },
+      { name: "AWS", years: 2 },
+      { name: "CI/CD Pipelines", years: 2 },
+      { name: "Docker", years: 2 },
+      { name: "EC2", years: 2 },
+      { name: "Amazon RDS", years: 1 },
+      { name: "Kubernetes", years: 1 },
     ],
   },
   {
     title: "AI & PLATFORMS",
     skills: [
-      { name: "Claude Agents", level: 86 },
-      { name: "Prompt Engineering", level: 88 },
-      { name: "Microsoft 365 Add-ins", level: 82 },
-      { name: "Gemini API", level: 80 },
+      { name: "Claude Agents", years: 1 },
+      { name: "Prompt Engineering", years: 1 },
+      { name: "Microsoft 365 Add-ins", years: 1 },
+      { name: "Gemini API", years: 1 },
     ],
   },
 ];
+
+function formatExperience(years: number) {
+  return years === 1 ? "1 year" : `${years} years`;
+}
 
 const fullStack = [
   "JavaScript",
@@ -107,12 +111,12 @@ export default function Skills() {
                     <div key={s.name}>
                       <div className="flex justify-between text-sm mb-1">
                         <span className="text-zinc-700">{s.name}</span>
-                        <span className="text-zinc-500 font-medium">{s.level}%</span>
+                        <span className="text-zinc-500 font-medium">{formatExperience(s.years)}</span>
                       </div>
                       <div className="h-2 rounded-full bg-zinc-100 overflow-hidden">
                         <div
                           className="h-full rounded-full bg-zinc-700"
-                          style={{ width: `${s.level}%` }}
+                          style={{ width: `${Math.min((s.years / 4) * 100, 100)}%` }}
                         />
                       </div>
                     </div>
