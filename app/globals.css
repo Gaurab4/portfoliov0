@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap');
 @import "tailwindcss";
 @config "../tailwind.config.js";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @keyframes fade-in {
   from { opacity: 0; }
@@ -100,24 +101,24 @@
 }
 
 .dark {
-  --background: 0 0% 5%;
-  --foreground: 60 5% 94%;
-  --card: 0 0% 8%;
-  --card-foreground: 60 5% 94%;
-  --primary: 0 0% 95%;
-  --primary-foreground: 0 0% 5%;
-  --secondary: 0 0% 12%;
-  --secondary-foreground: 60 5% 90%;
-  --muted: 0 0% 14%;
-  --muted-foreground: 0 0% 55%;
-  --accent: 0 0% 92%;
-  --accent-foreground: 0 0% 8%;
-  --border: 0 0% 18%;
-  --input: 0 0% 18%;
-  --ring: 0 0% 70%;
-  --surface: 0 0% 8%;
-  --surface-elevated: 0 0% 11%;
-  --section-alt: 0 0% 7%;
+  --background: 160 10% 7%;
+  --foreground: 0 0% 96%;
+  --card: 160 8% 12%;
+  --card-foreground: 0 0% 96%;
+  --primary: 0 0% 96%;
+  --primary-foreground: 160 10% 7%;
+  --secondary: 160 8% 14%;
+  --secondary-foreground: 0 0% 92%;
+  --muted: 160 6% 16%;
+  --muted-foreground: 0 0% 72%;
+  --accent: 152 76% 55%;
+  --accent-foreground: 160 10% 7%;
+  --border: 160 8% 22%;
+  --input: 160 8% 22%;
+  --ring: 152 60% 45%;
+  --surface: 160 8% 11%;
+  --surface-elevated: 160 8% 14%;
+  --section-alt: 160 10% 9%;
 }
 
 @theme inline {
@@ -138,6 +139,10 @@ body {
   color: hsl(var(--foreground));
   font-family: 'Space Grotesk', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  color: hsl(0 0% 96%);
 }
 
 h1, h2, h3, h4, h5, h6 {

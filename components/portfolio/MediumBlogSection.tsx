@@ -32,7 +32,7 @@ export function MediumBlogSection() {
         {[1, 2, 3].map((i) => (
           <div
             key={i}
-            className="rounded-lg bg-zinc-200/80 border border-zinc-200/60 h-28 sm:h-32"
+            className="rounded-lg bg-zinc-200/80 border border-zinc-200/60 h-28 sm:h-32 dark:bg-zinc-800 dark:border-zinc-700"
           />
         ))}
       </div>
@@ -41,13 +41,13 @@ export function MediumBlogSection() {
 
   if (error) {
     return (
-      <p className="text-zinc-500 text-center">
+      <p className="text-zinc-500 text-center dark:text-zinc-300">
         Couldn&apos;t load posts.{" "}
         <a
           href="https://medium.com/@gaurabth2002"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-zinc-800 underline underline-offset-2"
+          className="text-zinc-800 underline underline-offset-2 dark:text-emerald-400"
         >
           Open Medium
         </a>

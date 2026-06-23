@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const SECTION_IDS = ["hero", "projects", "experience", "skills", "blogs", "contact"];
+const SECTION_IDS = ["hero", "projects", "experience", "opensource", "skills", "blogs", "contact"];
 
 export function useScrollSpy() {
   const pathname = usePathname();
